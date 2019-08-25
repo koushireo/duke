@@ -22,7 +22,12 @@ public class task{
             note = d.split("/")[1].substring(0,index) + ": " + d.split("/")[1].substring(index + 1);
         }
         System.out.println("Got it. I've added this task:");
-        System.out.println("[" + description[0].toUpperCase().charAt(0) + "][0] " + what_to_do + " (" + note + ")");
+        if (note.equals("")) {
+            System.out.println("[" + description[0].toUpperCase().charAt(0) + "][0] " + what_to_do );
+        }
+        else {
+            System.out.println("[" + description[0].toUpperCase().charAt(0) + "][0] " + what_to_do + " ("  + note + ")");
+        }
         System.out.println("Now you have " + todo.size() + " in the list.");
         todo.add(new tuple(what_to_do, description[0].toUpperCase().charAt(0), note));
     }

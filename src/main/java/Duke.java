@@ -44,10 +44,18 @@ public class Duke {
                 todo.donezo(b);
             }
             else if (instruction[0].equals("todo") || instruction[0].equals("deadline") || instruction[0].equals("event") ){
-                todo.add(response);
+                if (instruction.length < 2){
+                    System.out.println("Please fill in the description of " + instruction[0]);
+                }
+                else if (!instruction[0].equals("todo") && !response.contains("/")){
+                    System.out.println("Please fill in the time for " + instruction[0]);
+                }
+                else {
+                    todo.add(response);
+                }
             }
             else{
-                //System.out.println("Unrecognised command");
+                System.out.println("Unrecognised command");
             }
             System.out.println("____________________________________________________________");
             response = a.nextLine();
