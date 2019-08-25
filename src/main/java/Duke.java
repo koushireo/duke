@@ -37,6 +37,10 @@ public class Duke {
             if (response.equals("list")){
                 todo.list();
             }
+            else if (response.substring(0,4).equals("done")){
+                int b = Integer.parseInt(response.substring(5,response.length()));
+                todo.donezo(b);
+            }
             else{
                 todo.add(response);
                 System.out.println("added: " + response);
