@@ -19,6 +19,7 @@ public class Duke {
     /** Extra javadoc (ignored). */
 
     public static void main(String[] args) {
+        task todo = new task();
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -30,12 +31,18 @@ public class Duke {
         System.out.println("What can I do for you?");
         System.out.println("____________________________________________________________");
         Scanner a = new Scanner(System.in);
-        String response = a.next();
+        String response = a.nextLine();
         while (true) {
             System.out.println("____________________________________________________________");
-            System.out.println(response);
+            if (response.equals("list")){
+                todo.list();
+            }
+            else{
+                todo.add(response);
+                System.out.println("added: " + response);
+            }
             System.out.println("____________________________________________________________");
-            response = a.next();
+            response = a.nextLine();
             if (response.equals("bye")) {
                 break;
             }
