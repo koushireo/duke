@@ -32,21 +32,26 @@ public class Duke {
         System.out.println("____________________________________________________________");
         Scanner a = new Scanner(System.in);
         String response = a.nextLine();
+        String[] instruction = response.split(" ");
         while (true) {
             System.out.println("____________________________________________________________");
-            if (response.equals("list")){
+            if (instruction[0].equals("list")){
+                System.out.println("Here are the tasks in your list:");
                 todo.list();
             }
-            else if (response.substring(0,4).equals("done")){
-                int b = Integer.parseInt(response.substring(5,response.length()));
+            else if (instruction[0].equals("done")){
+                int b = Integer.parseInt(instruction[1]);
                 todo.donezo(b);
             }
-            else{
+            else if (instruction[0].equals("todo") || instruction[0].equals("deadline") || instruction[0].equals("event") ){
                 todo.add(response);
-                System.out.println("added: " + response);
+            }
+            else{
+                //System.out.println("Unrecognised command");
             }
             System.out.println("____________________________________________________________");
             response = a.nextLine();
+            instruction = response.split(" ");
             if (response.equals("bye")) {
                 break;
             }
