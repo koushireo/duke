@@ -23,19 +23,24 @@ public class task{
                 what_to_do += description[i];
             }
         }
-        if (d.split("/").length > 1) {
-            index = d.split("/")[1].indexOf(" ");
-            note = d.split("/")[1].substring(0,index) + ": " + d.split("/")[1].substring(index + 1);
+        if (d.split("/",2).length > 1) {
+            index = d.split("/",2)[1].indexOf(" ");
+            note = d.split("/",2)[1].substring(0,index) + ": " + d.split("/",2)[1].substring(index + 1);
         }
         System.out.println("Got it. I've added this task:");
+        todo.add(new tuple(what_to_do, description[0].toUpperCase().charAt(0), note));
         if (note.equals("")) {
             System.out.println("[" + description[0].toUpperCase().charAt(0) + "][0] " + what_to_do );
         }
         else {
-            System.out.println("[" + description[0].toUpperCase().charAt(0) + "][0] " + what_to_do + " ("  + note + ")");
+            if (todo.get(todo.size() - 1).date == null) {
+                System.out.println("[" + description[0].toUpperCase().charAt(0) + "][0] " + what_to_do + " (" + note + ")");
+            }
+            else {
+                System.out.println("[" + description[0].toUpperCase().charAt(0) + "][0] " + what_to_do + " (" + todo.get(todo.size() - 1).date.print() + ")");
+            }
         }
         System.out.println("Now you have " + (todo.size() + 1) + " in the list.");
-        todo.add(new tuple(what_to_do, description[0].toUpperCase().charAt(0), note));
     }
 
     public void loadadd(String a, String b, String c, String d) {
@@ -50,7 +55,14 @@ public class task{
                 System.out.println();
             }
             else {
-                System.out.println("(" + todo.get(i-1).additional + ")");
+                if (todo.get(i-1).date == null) {
+                    System.out.println("(" + todo.get(i-1).additional + ")");
+                }
+                else{
+                    System.out.print("(" + todo.get(i-1).additional.split(" ")[0] + " ");
+                    System.out.print(todo.get(i-1).date.print());
+                    System.out.println(")");
+                }
             }
         }
     }
