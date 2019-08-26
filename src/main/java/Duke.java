@@ -3,6 +3,7 @@
  * @see Duke
  */
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Duke {
@@ -52,6 +53,22 @@ public class Duke {
                 }
                 else {
                     todo.add(response);
+                }
+            }
+            else if (instruction[0].equals("save")) {
+                try {
+                    todo.save();
+                }
+                catch (IOException e) {
+                    System.out.println("Save failed");
+                }
+            }
+            else if (instruction[0].equals("load")) {
+                try {
+                    todo.load();
+                }
+                catch (IOException e) {
+                    System.out.println("Load failed");
                 }
             }
             else{

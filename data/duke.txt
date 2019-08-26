@@ -1,0 +1,3 @@
+add book|1||T|
+school|0|at: monday|E|
+homework|0|by: tomorrow|D|
