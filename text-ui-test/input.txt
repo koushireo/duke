@@ -1,0 +1,7 @@
+todo homework
+deadline homework /by sunday
+event go school /by 5/5/2013 2143
+save
+done 1
+list
+bye

@@ -8,7 +8,6 @@ import java.io.FileReader;
 
 public class task{
     private ArrayList<tuple> todo = new ArrayList<tuple>();
-
     public void add(String d){
         String[] description = d.split(" ");
         String what_to_do = description[1];

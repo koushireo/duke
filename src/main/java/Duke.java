@@ -87,6 +87,7 @@ public class Duke {
         System.out.println("____________________________________________________________");
         System.out.println("Bye! Hope to see you again.");
         System.out.println("____________________________________________________________");
-
+        a.close();
     }
+
 }
