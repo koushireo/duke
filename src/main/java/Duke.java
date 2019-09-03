@@ -21,7 +21,6 @@ public class Duke {
 
     public static void main(String[] args) {
         task todo = new task();
-        parser parse = new parser();
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -35,18 +34,17 @@ public class Duke {
         Scanner a = new Scanner(System.in);
         String response = a.nextLine();
         String[] instruction = response.split(" ");
-        parse.setaction(instruction[0]);
         while (true) {
             System.out.println("____________________________________________________________");
-            if (parse.getaction() == 1){
+            if (instruction[0].equals("list")){
                 System.out.println("Here are the tasks in your list:");
                 todo.list();
             }
-            else if (parse.getaction() == 2){
+            else if (instruction[0].equals("done")){
                 int b = Integer.parseInt(instruction[1]);
                 todo.donezo(b);
             }
-            else if (parse.getaction() == 3){
+            else if (instruction[0].equals("todo") || instruction[0].equals("deadline") || instruction[0].equals("event") ){
                 if (instruction.length < 2){
                     System.out.println("Please fill in the description of " + instruction[0]);
                 }
@@ -57,33 +55,26 @@ public class Duke {
                     todo.add(response);
                 }
             }
-            else if (parse.getaction() == 4) {
+            else if (instruction[0].equals("save")) {
                 try {
-                    save temp = new save(todo);
-                    temp.savetask();
+                    todo.save();
                 }
                 catch (IOException e) {
                     System.out.println("Save failed");
                 }
             }
-            else if (parse.getaction() == 5) {
-                if (!todo.isempty()){
-                    System.out.println("There are already tasks in the list");
+            else if (instruction[0].equals("load")) {
+                try {
+                    todo.load();
                 }
-                else {
-                    try {
-                        load loadtemp = new load();
-                        loadtemp.loadtask();
-                        todo = loadtemp.giveback();
-                    } catch (IOException e) {
-                        System.out.println("Load failed");
-                    }
+                catch (IOException e) {
+                    System.out.println("Load failed");
                 }
             }
-            else if(parse.getaction() == 6){
+            else if(instruction[0].equals("delete")){
                 todo.delete(Integer.parseInt(instruction[1]));
             }
-            else if(parse.getaction() == 7){
+            else if(instruction[0].equals("find")){
                 todo.find(response);
             }
             else{
@@ -92,7 +83,6 @@ public class Duke {
             System.out.println("____________________________________________________________");
             response = a.nextLine();
             instruction = response.split(" ");
-            parse.setaction(instruction[0]);
             if (response.equals("bye")) {
                 break;
             }
