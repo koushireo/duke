@@ -71,6 +71,9 @@ public class Duke {
                     System.out.println("Load failed");
                 }
             }
+            else if(instruction[0].equals("delete")){
+                todo.delete(Integer.parseInt(instruction[1]));
+            }
             else{
                 System.out.println("Unrecognised command");
             }

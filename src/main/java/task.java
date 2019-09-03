@@ -27,8 +27,10 @@ public class task{
             index = d.split("/",2)[1].indexOf(" ");
             note = d.split("/",2)[1].substring(0,index) + ": " + d.split("/",2)[1].substring(index + 1);
         }
-        System.out.println("Got it. I've added this task:");
         todo.add(new tuple(what_to_do, description[0].toUpperCase().charAt(0), note));
+        String z = "Got it. I've added this task:";
+        System.out.println(z);
+//        System.out.println();
         if (note.equals("")) {
             System.out.println("[" + description[0].toUpperCase().charAt(0) + "][0] " + what_to_do );
         }
@@ -40,7 +42,7 @@ public class task{
                 System.out.println("[" + description[0].toUpperCase().charAt(0) + "][0] " + what_to_do + " (" + todo.get(todo.size() - 1).date.print() + ")");
             }
         }
-        System.out.println("Now you have " + (todo.size() + 1) + " in the list.");
+        System.out.println("Now you have " + (todo.size()) + " in the list.");
     }
 
     public void loadadd(String a, String b, String c, String d) {
@@ -81,7 +83,7 @@ public class task{
         }
     }
     public void save() throws IOException {
-        File file = new File("C:\\Users\\khr\\Desktop\\2113\\duke-gradle-1\\duke\\data\\duke.txt");
+        File file = new File("C:\\Users\\fch\\Desktop\\2113\\duke-gradle-1\\master\\data\\duke.txt");
         if (!file.exists()) {
             file.createNewFile();
         }
@@ -98,7 +100,7 @@ public class task{
         if (todo.isEmpty()) {
             String current;
             String[] temp;
-            File file = new File("C:\\Users\\khr\\Desktop\\2113\\duke-gradle-1\\duke\\data\\duke.txt");
+            File file = new File("C:\\Users\\fch\\Desktop\\2113\\duke-gradle-1\\master\\data\\duke.txt");
             BufferedReader loadfile = new BufferedReader((new FileReader(file)));
             while ((current = loadfile.readLine()) != null) {
                 temp = current.split("\\|");
@@ -109,6 +111,27 @@ public class task{
         }
         else {
             System.out.println("There are already tasks in the list");
+        }
+    }
+    public void delete(int i){
+        if (i <= todo.size() && i > 0){
+            System.out.println("The task below has been successfully removed");
+            System.out.print(i + ".[" + todo.get(i - 1).type + "][" + todo.get(i - 1).done + "] " + todo.get(i - 1).todo);
+            if (todo.get(i - 1).additional.equals("")) {
+                System.out.println();
+            } else {
+                if (todo.get(i - 1).date == null) {
+                    System.out.println("(" + todo.get(i - 1).additional + ")");
+                } else {
+                    System.out.print("(" + todo.get(i - 1).additional.split(" ")[0] + " ");
+                    System.out.print(todo.get(i - 1).date.print());
+                    System.out.println(")");
+                }
+            }
+            todo.remove(i - 1);
+        }
+        else {
+            System.out.println("Out of range.");
         }
     }
 }
