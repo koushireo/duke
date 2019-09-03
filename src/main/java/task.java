@@ -8,6 +8,7 @@ import java.io.FileReader;
 
 public class task{
     private ArrayList<tuple> todo = new ArrayList<tuple>();
+
     public void add(String d){
         String[] description = d.split(" ");
         String what_to_do = description[1];
@@ -131,6 +132,26 @@ public class task{
         }
         else {
             System.out.println("Out of range.");
+        }
+    }
+    public void find(String a){
+        String keyword = a.split(" ",2)[1];
+        System.out.println("The following tasks matched your keyword(" + keyword + ")");
+        for (int i = 0; i < todo.size(); i++) {
+            if (todo.get(i).todo.contains(keyword)) {
+                System.out.print(i + ".[" + todo.get(i).type + "][" + todo.get(i).done + "] " + todo.get(i).todo);
+                if (todo.get(i).additional.equals("")) {
+                    System.out.println();
+                } else {
+                    if (todo.get(i - 1).date == null) {
+                        System.out.println("(" + todo.get(i).additional + ")");
+                    } else {
+                        System.out.print("(" + todo.get(i).additional.split(" ")[0] + " ");
+                        System.out.print(todo.get(i).date.print());
+                        System.out.println(")");
+                    }
+                }
+            }
         }
     }
 }

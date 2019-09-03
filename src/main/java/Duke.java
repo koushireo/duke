@@ -74,6 +74,9 @@ public class Duke {
             else if(instruction[0].equals("delete")){
                 todo.delete(Integer.parseInt(instruction[1]));
             }
+            else if(instruction[0].equals("find")){
+                todo.find(response);
+            }
             else{
                 System.out.println("Unrecognised command");
             }
@@ -87,7 +90,6 @@ public class Duke {
         System.out.println("____________________________________________________________");
         System.out.println("Bye! Hope to see you again.");
         System.out.println("____________________________________________________________");
-        a.close();
-    }
 
+    }
 }
