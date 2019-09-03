@@ -1,10 +1,10 @@
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.File;
 
 public class task{
     private ArrayList<tuple> todo = new ArrayList<tuple>();
@@ -152,6 +152,20 @@ public class task{
                     }
                 }
             }
+        }
+    }
+    public tuple get(int a){
+        return todo.get(a);
+    }
+    public int size(){
+        return todo.size();
+    }
+    public boolean isempty(){
+        if (todo.isEmpty()){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }
