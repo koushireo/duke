@@ -36,6 +36,7 @@ public class Duke {
         String response = a.nextLine();
         String[] instruction = response.split(" ");
         parse.setaction(instruction[0]);
+        DukeException handle = new DukeException();
         while (true) {
             if (response.equals("bye")) {
                 break;
@@ -51,10 +52,10 @@ public class Duke {
             }
             else if (parse.getaction() == 3){
                 if (instruction.length < 2){
-                    System.out.println("Please fill in the description of " + instruction[0]);
+                    handle.lackDescription(instruction[0]);
                 }
                 else if (!instruction[0].equals("todo") && !response.contains("/")){
-                    System.out.println("Please fill in the time for " + instruction[0]);
+                    handle.lackTime(instruction[0]);
                 }
                 else {
                     todo.add(response);
@@ -66,12 +67,12 @@ public class Duke {
                     temp.savetask();
                 }
                 catch (IOException e) {
-                    System.out.println("Save failed");
+                    handle.failSave();
                 }
             }
             else if (parse.getaction() == 5) {
                 if (!todo.isempty()){
-                    System.out.println("There are already tasks in the list");
+                    handle.noLoad();
                 }
                 else {
                     try {
@@ -79,7 +80,7 @@ public class Duke {
                         loadtemp.loadtask();
                         todo = loadtemp.giveback();
                     } catch (IOException e) {
-                        System.out.println("Load failed");
+                        handle.failLoad();
                     }
                 }
             }
