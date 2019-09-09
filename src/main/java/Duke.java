@@ -37,6 +37,9 @@ public class Duke {
         String[] instruction = response.split(" ");
         parse.setaction(instruction[0]);
         while (true) {
+            if (response.equals("bye")) {
+                break;
+            }
             System.out.println("____________________________________________________________");
             if (parse.getaction() == 1){
                 System.out.println("Here are the tasks in your list:");
@@ -93,9 +96,6 @@ public class Duke {
             response = a.nextLine();
             instruction = response.split(" ");
             parse.setaction(instruction[0]);
-            if (response.equals("bye")) {
-                break;
-            }
         }
         System.out.println("____________________________________________________________");
         System.out.println("Bye! Hope to see you again.");
