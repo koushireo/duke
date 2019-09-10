@@ -9,6 +9,11 @@ public class save {
         temp = a;
     }
     public void savetask() throws IOException {
+        /**
+         * save
+         * Save information of tuple objects in ArrayList to a text file. Throws exception error if file not found
+         * @author  Foo Chi Hen
+         */
         File file = new File("C:\\Users\\fch\\Desktop\\2113\\duke-gradle-1\\master\\data\\duke.txt");
         if (!file.exists()) {
             file.createNewFile();

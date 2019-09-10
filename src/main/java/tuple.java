@@ -1,4 +1,12 @@
 public class tuple {
+    /**
+     * task tuple
+     * Accepts input and pass input thru parser before doing the appropriate function
+     * @params todo description of the task
+     * @params a defined as the type of task(T - Todo, D - Deadline, E - Event)
+     * @params b additional notes such as info about when the task should be done by or when is the event
+     * @author  Foo Chi Hen
+     */
     public String todo;
     public int done;
     public char type;

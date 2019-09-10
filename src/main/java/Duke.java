@@ -7,17 +7,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Duke {
-    /** Not a javadoc (ignored). */
 
     /**
-     * Doubles the value.
-     * The long and detailed explanation what the method does.
-     *
-     * @param value for doubling.
-     * @return double value.
+     * Duke-UI
+     * Accepts input and pass input thru parser before doing the appropriate function
+     * @author  Foo Chi Hen
      */
-
-    /** Extra javadoc (ignored). */
 
     public static void main(String[] args) {
         task todo = new task();

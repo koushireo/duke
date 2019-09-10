@@ -1,4 +1,9 @@
 public class DukeException {
+    /**
+     * DukeException
+     * Runs when there is an error with the flow of the program
+     * @author  Foo Chi Hen
+     */
     public void lackDescription(String a){
         System.out.println("Please fill in the description of " + a);
     }

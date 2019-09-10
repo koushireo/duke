@@ -1,4 +1,10 @@
 public class parser {
+    /**
+     * parser
+     * Process inputs from Duke and return the appropriate command
+     * @params a first word of the command input by user
+     * @author  Foo Chi Hen
+     */
     private int action;
     public void setaction(String a){
         if (a.equals("list")){

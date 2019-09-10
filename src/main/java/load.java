@@ -6,6 +6,12 @@ import java.io.File;
 public class load {
     task temp = new task();
     public void loadtask() throws IOException {
+        /**
+         * load
+         * Load the saved information as tuple and add to ArrayList. Throws exception error if file not found,
+         * or if there are already tasks in the ArrayList. Returns the initiated ArrayList
+         * @author  Foo Chi Hen
+         */
         String current;
         String[] temp1;
         File file = new File("C:\\Users\\fch\\Desktop\\2113\\duke-gradle-1\\master\\data\\duke.txt");

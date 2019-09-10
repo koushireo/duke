@@ -7,9 +7,19 @@ import java.io.FileWriter;
 import java.io.File;
 
 public class task{
+    /**
+     * task
+     * ArrayList of tuple objects to store the tasks input by user
+     * @author  Foo Chi Hen
+     */
     private ArrayList<tuple> todo = new ArrayList<tuple>();
 
     public void add(String d){
+        /**
+         * Add
+         * Create a tuple object and add to initialised ArrayList<tuple></tuple>
+         * @params d the full command input by user
+         */
         String[] description = d.split(" ");
         String what_to_do = description[1];
         String note = "";
@@ -51,6 +61,11 @@ public class task{
         todo.add(temp);
     }
     public void list(){
+        /**
+         * List
+         * Output the entire tuple objects in the ArrayList<tuple></tuple>
+         * @author  Foo Chi Hen
+         */
         for (int i = 1; i <= todo.size(); i++) {
             System.out.print(i + ".[" + todo.get(i-1).type + "][" + todo.get(i-1).done + "] " + todo.get(i-1).todo);
             if (todo.get(i-1).additional.equals("")){
@@ -70,6 +85,12 @@ public class task{
     }
 
     public void donezo(int a){
+        /**
+         * Done
+         * Mark a task is done
+         * @params a the index of the task on the list
+         * @author  Foo Chi Hen
+         */
         if (a > todo.size()){
             System.out.println("Out of range");
         }
@@ -83,6 +104,11 @@ public class task{
         }
     }
     public void save() throws IOException {
+        /**
+         * save
+         * Save information of tuple objects in ArrayList to a text file. Throws exception error if file not found
+         * @author  Foo Chi Hen
+         */
         File file = new File("C:\\Users\\fch\\Desktop\\2113\\duke-gradle-1\\master\\data\\duke.txt");
         if (!file.exists()) {
             file.createNewFile();
@@ -97,6 +123,12 @@ public class task{
         savefile.close();
     }
     public void load() throws IOException {
+        /**
+         * load
+         * Load the saved information as tuple and add to ArrayList. Throws exception error if file not found,
+         * or if there are already tasks in the ArrayList
+         * @author  Foo Chi Hen
+         */
         if (todo.isEmpty()) {
             String current;
             String[] temp;
@@ -114,6 +146,12 @@ public class task{
         }
     }
     public void delete(int i){
+        /**
+         * delete
+         * Delete the task in the ArrayList determined by the user
+         * @params i The index of the tuple on the list
+         * @author  Foo Chi Hen
+         */
         if (i <= todo.size() && i > 0){
             System.out.println("The task below has been successfully removed");
             System.out.print(i + ".[" + todo.get(i - 1).type + "][" + todo.get(i - 1).done + "] " + todo.get(i - 1).todo);
@@ -135,6 +173,12 @@ public class task{
         }
     }
     public void find(String a){
+        /**
+         * find
+         * Output the tasks in the list that fit the keyword input by user
+         * @params a the keyword to be used to find the relevant tasks
+         * @author  Foo Chi Hen
+         */
         String keyword = a.split(" ",2)[1];
         System.out.println("The following tasks matched your keyword(" + keyword + ")");
         for (int i = 0; i < todo.size(); i++) {
